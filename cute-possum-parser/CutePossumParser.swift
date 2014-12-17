@@ -31,7 +31,7 @@ public class CutePossumParser {
   }
   
   // Returns possum parser for the child data with 'name'
-  subscript(name: String) -> CutePossumParser {
+  public subscript(name: String) -> CutePossumParser {
     if let subData = data[name] as? NSDictionary {
       return CutePossumParser(data: subData, parent: self)
     } else {
@@ -41,7 +41,7 @@ public class CutePossumParser {
   }
   
   private var amISuccessfull = true
-  var successfull: Bool {
+  public var successfull: Bool {
     get {
       if let currentParent = parent {
         return currentParent.successfull
@@ -58,13 +58,13 @@ public class CutePossumParser {
     }
   }
   
-  public func parse<T>(name: String, miss: T, optional: Bool = false) -> T {
+  public func parse<T>(name: String, miss: T, canBeMissing: Bool = false) -> T {
     if !successfull { return miss }
     
     if let parsed = data[name] as? T {
       return parsed
     } else {
-      if !optional { successfull = false }
+      if !canBeMissing { successfull = false }
     }
     
     return miss
@@ -80,7 +80,7 @@ public class CutePossumParser {
     return miss
   }
   
-  func parseArray<T: CollectionType>(name: String, miss: T, optional: Bool = false,
+  func parseArray<T: CollectionType>(name: String, miss: T, canBeMissing: Bool = false,
     parser: (CutePossumParser)->(T.Generator.Element)) -> T {
       
     var value: AnyObject? = data[name]
@@ -95,7 +95,7 @@ public class CutePossumParser {
         if successfull {
           parsedItems.append(parsedValue)
         } else {
-          if !optional { successfull = false }
+          if !canBeMissing { successfull = false }
           return miss
         }
       }
@@ -104,7 +104,7 @@ public class CutePossumParser {
       
     } else {
       
-      if !optional { successfull = false }
+      if !canBeMissing { successfull = false }
       
     }
     
