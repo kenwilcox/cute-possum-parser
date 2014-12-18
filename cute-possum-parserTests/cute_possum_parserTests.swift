@@ -21,11 +21,17 @@ class cute_possum_parserTests: XCTestCase {
       let lengthCM: Int
       let weightKG: Double
       let likes: [String]
-      let home: PossumAddress
+      let home: Address
+      let friends: [Friend]
     }
     
-    struct PossumAddress {
+    struct Address {
       let planet: String
+    }
+    
+    struct Friend {
+      let name: String
+      let likesLeaves: Bool
     }
     
     let p = CutePossumParser(json: json)
@@ -37,19 +43,40 @@ class cute_possum_parserTests: XCTestCase {
       weightKG: p.parse("weightKG", miss: 0),
       likes: p.parse("likes", miss: []),
       
-      home: PossumAddress(
+      home: Address(
         planet: p["home"].parse("planet", miss: "")
-      )
+      ),
+      
+      friends: p.parseArray("friends", miss: [], parser: { p in
+
+        return Friend(
+          name: p.parse("name", miss: ""),
+          likesLeaves: p.parse("likesLeaves", miss: true)
+        )
+        
+      })
     )
     
     XCTAssertTrue(p.successfull)
     
-    XCTAssertEqual("Cutie", model.name)
+    XCTAssertEqual("Cutie the possum", model.name)
     XCTAssertEqual("", model.species) // missing in JSON
     XCTAssertEqual(31, model.lengthCM)
     XCTAssertEqual(2.2, model.weightKG)
     XCTAssertEqual(["leaves", "carrots", "strawberries"], model.likes)
     XCTAssertEqual("Earth", model.home.planet)
+    
+    XCTAssertEqual(2, model.friends.count)
+    
+    // Friend one
+    let friend1 =  model.friends[0]
+    XCTAssertEqual("Pinky the wombat", friend1.name)
+    XCTAssertEqual(true, friend1.likesLeaves)
+    
+    // Friend two
+    let friend2 =  model.friends[1]
+    XCTAssertEqual("Fluffy the platypus", friend2.name)
+    XCTAssertEqual(false, friend2.likesLeaves)
   }
   
   func testPerformanceExample() {

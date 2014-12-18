@@ -80,7 +80,7 @@ public class CutePossumParser {
     return miss
   }
   
-  func parseArray<T: CollectionType>(name: String, miss: T, canBeMissing: Bool = false,
+  public func parseArray<T: CollectionType>(name: String, miss: T, canBeMissing: Bool = false,
     parser: (CutePossumParser)->(T.Generator.Element)) -> T {
       
     var value: AnyObject? = data[name]
