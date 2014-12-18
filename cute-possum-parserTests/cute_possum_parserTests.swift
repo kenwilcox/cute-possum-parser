@@ -225,7 +225,6 @@ class cute_possum_parserTests: XCTestCase {
   // Failures
   // ---------------------
   
-  
   func testParseFailure() {
     let p = CutePossumParser(json: "not a valid JSON")
     let result: String = p.parse("")
