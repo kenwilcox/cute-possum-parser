@@ -51,26 +51,26 @@ public class CutePossumParser {
     }
   }
   
-  private var amISuccessfull = true
+  private var amISuccessful = true
   
-  // Was parsing successfull?
-  public var successfull: Bool {
+  // Was parsing successful?
+  public var successful: Bool {
     get {
       if let currentParent = parent {
-        return currentParent.successfull
+        return currentParent.successful
       }
-      return amISuccessfull
+      return amISuccessful
     }
   }
   
   private func reportFailure() {
     parent?.reportFailure()
-    amISuccessfull = false
+    amISuccessful = false
   }
   
   // Parses primitive value: String, Int, [String] etc.
   public func parse<T>(name: String, miss: T, canBeMissing: Bool = false) -> T {
-    if !successfull { return miss }
+    if !successful { return miss }
     
     if let parsed = data[name] as? T {
       return parsed
@@ -83,7 +83,7 @@ public class CutePossumParser {
   
   // Parses a value that is assigned to a Swift optional.
   public func parseOptional<T>(name: String, miss: T? = nil) -> T? {
-    if !successfull { return miss }
+    if !successful { return miss }
     
     if let parsed = data[name] as? T {
       return parsed
@@ -94,7 +94,7 @@ public class CutePossumParser {
   
   // Parses an array of primitive values: String, Int, [String] etc.
   public func parseArray<T: CollectionType>(miss: T, canBeMissing: Bool = false) -> T {
-    if !successfull { return miss }
+    if !successful { return miss }
     
     return parse(cutePossumArrayKey, miss: miss, canBeMissing: canBeMissing)
   }
@@ -119,7 +119,7 @@ public class CutePossumParser {
         let itemParser = CutePossumParser(data: item, parent: self)
         let parsedValue = parser(itemParser)
         
-        if successfull {
+        if successful {
           parsedItems.append(parsedValue)
         } else {
           if !canBeMissing { reportFailure() }

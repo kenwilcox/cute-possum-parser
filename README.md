@@ -21,7 +21,7 @@ We want to convert the JSON:
   "home": {
     "planet": "Earth"
   },
-  
+
   "friends": [
     {
       "name": "Pinky the wombat",
@@ -75,22 +75,22 @@ let model = Possum(
   plans: p.parseOptional("plans"),
   spouse: p.parseOptional("spouse"),
   bio: p.parseOptional("bio"),
-  
+
   home: Address(
     planet: p["home"].parse("planet", miss: "")
   ),
-  
+
   friends: p.parseArray("friends", miss: [], parser: { p in
 
     return Friend(
       name: p.parse("name", miss: ""),
       likesLeaves: p.parse("likesLeaves", miss: true)
     )
-    
+
   })
 )
 
-if !p.successfull { // report failure if necessary }
+if !p.successful { // report failure if necessary }
 ```
 
 See other examples in this [unit test](https://github.com/exchangegroup/cute-possum-parser/blob/master/cute-possum-parserTests/cute_possum_parserTests.swift).
