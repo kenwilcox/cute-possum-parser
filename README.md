@@ -4,7 +4,7 @@ This parser is designed to convert JSON into Swift structs and classes.
 
 ## Example
 
-We want to convert the JSON file:
+We want to convert the JSON:
 
 ```JSON
 {
