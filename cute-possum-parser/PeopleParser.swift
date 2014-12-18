@@ -16,7 +16,10 @@ public class PeopleParser {
       return Person(
         id: p.parse("id", miss: 0),
         name: p.parse("name", miss: ""),
-        age: p.parse("age", miss: 0)
+        age: p.parse("age", miss: 0),
+        latitude: p.parse("latitude", miss: 0),
+        longitude: p.parse("longitude", miss: 0),
+        tags: p.parse("tags", miss: [])
       )
     })
   }

@@ -132,6 +132,20 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(5, person.id)
     XCTAssertEqual("Hester Drake", person.name)
     XCTAssertEqual(20, person.age)
+    XCTAssertEqual(52.299449, person.latitude)
+    XCTAssertEqual(34.443687, person.longitude)
+    
+    let expectedTags = [
+      "reprehenderit",
+      "cupidatat",
+      "laboris",
+      "occaecat",
+      "cupidatat",
+      "eu",
+      "velit"
+    ]
+    
+    XCTAssertEqual(expectedTags, person.tags)
 
   }
   
