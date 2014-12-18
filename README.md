@@ -98,4 +98,4 @@ See other examples in this [unit test](https://github.com/exchangegroup/cute-pos
 
 ## Project home
 
-[https://github.com/exchangegroup/cute-possum-parser/tree/master/cute-possum-parser][]
+https://github.com/exchangegroup/cute-possum-parser/tree/master/cute-possum-parser
