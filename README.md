@@ -4,7 +4,7 @@ This parser is designed to convert JSON into Swift variable, structs or classes.
 
 ## Example
 
-
+JSON
 ```
 {
   "name": "Cutie the possum",
