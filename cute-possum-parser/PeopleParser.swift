@@ -15,7 +15,8 @@ public class PeopleParser {
     return p.parseArray([], parser: { p in
       return Person(
         id: p.parse("id", miss: 0),
-        name: p.parse("name", miss: "")
+        name: p.parse("name", miss: ""),
+        age: p.parse("age", miss: 0)
       )
     })
   }

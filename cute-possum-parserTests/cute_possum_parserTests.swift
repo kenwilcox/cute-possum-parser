@@ -130,7 +130,9 @@ class cute_possum_parserTests: XCTestCase {
     
     let person = people[4]
     XCTAssertEqual(5, person.id)
-    XCTAssertEqual("Alston West", person.name)
+    XCTAssertEqual("Hester Drake", person.name)
+    XCTAssertEqual(20, person.age)
+
   }
   
   func testPerformanceExample() {
