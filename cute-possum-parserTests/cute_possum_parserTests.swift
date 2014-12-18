@@ -88,6 +88,36 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(false, friend2.likesLeaves)
   }
   
+  func testParseArray() {
+    let json = TestJsonLoader.read("array.json")
+    
+    struct StrangeThing {
+      let name: String
+      let spin: Bool
+    }
+    
+    let p = CutePossumParser(json: json)
+    
+    let things: [StrangeThing] = p.parseArray([], parser: { p in
+      return StrangeThing(
+        name: p.parse("name", miss: ""),
+        spin: p.parse("spin", miss: false)
+      )
+    })
+    
+    XCTAssertEqual(2, things.count)
+    
+    // First thing
+    let thing1 = things[0]
+    XCTAssertEqual("Zora", thing1.name)
+    XCTAssertEqual(true, thing1.spin)
+    
+    // Second thing
+    let thing2 = things[1]
+    XCTAssertEqual("Quwa", thing2.name)
+    XCTAssertEqual(false, thing2.spin)
+  }
+  
   func testPerformanceExample() {
       // This is an example of a performance test case.
       self.measureBlock() {

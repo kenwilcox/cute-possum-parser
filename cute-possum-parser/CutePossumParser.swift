@@ -8,20 +8,26 @@
 
 import Foundation
 
+private let cutePossumArrayKey = "kutePossumArrayKey#&"
+
 public class CutePossumParser {
   var parent: CutePossumParser?
   private let data: NSDictionary
   
   public init(json: String) {
-    var encoded = json.dataUsingEncoding(NSUTF8StringEncoding)
+    let encoded = json.dataUsingEncoding(NSUTF8StringEncoding)
+    let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(encoded!,
+      options: .MutableContainers, error: nil)
     
-    if let parsed = NSJSONSerialization.JSONObjectWithData(encoded!,
-      options: .MutableContainers, error: nil) as? NSDictionary {
-        
-        data = parsed
+    if let parsed = parsedObject as? NSDictionary {
+      data = parsed
     } else {
-      data = NSDictionary()
-      successfull = false
+      if let parsed = parsedObject as? NSArray { // handle array in json
+        data = [cutePossumArrayKey: parsed]
+      } else {
+        data = NSDictionary()
+        successfull = false
+      }
     }
   }
   
@@ -78,6 +84,12 @@ public class CutePossumParser {
     }
     
     return miss
+  }
+  
+  public func parseArray<T: CollectionType>(miss: T, canBeMissing: Bool = false,
+    parser: (CutePossumParser)->(T.Generator.Element)) -> T {
+    
+    return parseArray(cutePossumArrayKey, miss: miss, parser: parser)
   }
   
   public func parseArray<T: CollectionType>(name: String, miss: T, canBeMissing: Bool = false,

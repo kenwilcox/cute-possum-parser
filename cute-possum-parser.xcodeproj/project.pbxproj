@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B89618D1A42543B002309C8 /* array.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B89618B1A42541D002309C8 /* array.json */; };
 		2BD30DB71A423FC800BEC3BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD30DB61A423FC800BEC3BE /* AppDelegate.swift */; };
 		2BD30DB91A423FC800BEC3BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD30DB81A423FC800BEC3BE /* ViewController.swift */; };
 		2BD30DBC1A423FC800BEC3BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2BD30DBA1A423FC800BEC3BE /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B89618B1A42541D002309C8 /* array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = array.json; sourceTree = "<group>"; };
 		2BD30DB11A423FC800BEC3BE /* cute-possum-parser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cute-possum-parser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD30DB51A423FC800BEC3BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2BD30DB61A423FC800BEC3BE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			children = (
 				2BD30DDE1A4240CD00BEC3BE /* TestJsonLoader.swift */,
 				2BD30DDA1A42405800BEC3BE /* cutie_possum.json */,
+				2B89618B1A42541D002309C8 /* array.json */,
 			);
 			name = TestData;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2B89618D1A42543B002309C8 /* array.json in Resources */,
 				2BD30DBC1A423FC800BEC3BE /* Main.storyboard in Resources */,
 				2BD30DDB1A42405800BEC3BE /* cutie_possum.json in Resources */,
 				2BD30DC11A423FC800BEC3BE /* LaunchScreen.xib in Resources */,
