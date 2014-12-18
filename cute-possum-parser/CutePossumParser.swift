@@ -70,7 +70,7 @@ public class CutePossumParser {
     return miss
   }
   
-  func parseOptional<T>(name: String, miss: T? = nil) -> T? {
+  public func parseOptional<T>(name: String, miss: T? = nil) -> T? {
     if !successfull { return miss }
     
     if let parsed = data[name] as? T {

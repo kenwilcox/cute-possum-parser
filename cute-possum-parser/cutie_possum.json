@@ -3,6 +3,8 @@
   "lengthCM": 31,
   "weightKG": 2.2,
   "likes": ["leaves", "carrots", "strawberries"],
+  "plans": null,
+  "spouse": "Mikrla the possum",
   "home": {
     "planet": "Earth"
   },

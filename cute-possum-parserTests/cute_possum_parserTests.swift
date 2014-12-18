@@ -21,6 +21,9 @@ class cute_possum_parserTests: XCTestCase {
       let lengthCM: Int
       let weightKG: Double
       let likes: [String]
+      let plans: [String]?
+      let spouse: String?
+      let bio: String?
       let home: Address
       let friends: [Friend]
     }
@@ -42,6 +45,9 @@ class cute_possum_parserTests: XCTestCase {
       lengthCM: p.parse("lengthCM", miss: 0),
       weightKG: p.parse("weightKG", miss: 0),
       likes: p.parse("likes", miss: []),
+      plans: p.parseOptional("plans"),
+      spouse: p.parseOptional("spouse"),
+      bio: p.parseOptional("bio"),
       
       home: Address(
         planet: p["home"].parse("planet", miss: "")
@@ -64,6 +70,9 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(31, model.lengthCM)
     XCTAssertEqual(2.2, model.weightKG)
     XCTAssertEqual(["leaves", "carrots", "strawberries"], model.likes)
+    XCTAssertTrue(model.plans == nil) // 'null' in JSON
+    XCTAssertEqual("Mikrla the possum", model.spouse!)
+    XCTAssertTrue(model.bio == nil) // missing in JSON
     XCTAssertEqual("Earth", model.home.planet)
     
     XCTAssertEqual(2, model.friends.count)
