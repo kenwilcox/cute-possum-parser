@@ -105,6 +105,8 @@ class cute_possum_parserTests: XCTestCase {
       )
     })
     
+    XCTAssertTrue(p.successfull)
+    
     XCTAssertEqual(2, things.count)
     
     // First thing
@@ -118,11 +120,21 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(false, thing2.spin)
   }
   
+  func testParsePrimitiveArray() {
+    let json = TestJsonLoader.read("primitive_array.json")
+    
+    let p = CutePossumParser(json: json)
+    let items: [String] = p.parseArray([])
+    
+    XCTAssertTrue(p.successfull)
+    XCTAssertEqual(["one", "two", "three"], items)
+  }
+  
   func testParsePeople() {
     let json = TestJsonLoader.read("people.json")
     
     let people = PeopleParser.parse(json)
-    
+        
     XCTAssertEqual(100, people.count)
     
     // Person

@@ -15,6 +15,7 @@
 		2B416DE31A42812F00F23E60 /* TegOutputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B416DE21A42812F00F23E60 /* TegOutputView.swift */; };
 		2B416DE51A42813D00F23E60 /* TegVisibleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B416DE41A42813D00F23E60 /* TegVisibleViewController.swift */; };
 		2B416DE71A42814D00F23E60 /* TegQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B416DE61A42814D00F23E60 /* TegQ.swift */; };
+		2B416DE91A42879000F23E60 /* primitive_array.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B416DE81A42879000F23E60 /* primitive_array.json */; };
 		2B89618D1A42543B002309C8 /* array.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B89618B1A42541D002309C8 /* array.json */; };
 		2BD30DB71A423FC800BEC3BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD30DB61A423FC800BEC3BE /* AppDelegate.swift */; };
 		2BD30DB91A423FC800BEC3BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD30DB81A423FC800BEC3BE /* ViewController.swift */; };
@@ -47,6 +48,7 @@
 		2B416DE21A42812F00F23E60 /* TegOutputView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegOutputView.swift; sourceTree = "<group>"; };
 		2B416DE41A42813D00F23E60 /* TegVisibleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegVisibleViewController.swift; sourceTree = "<group>"; };
 		2B416DE61A42814D00F23E60 /* TegQ.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TegQ.swift; sourceTree = "<group>"; };
+		2B416DE81A42879000F23E60 /* primitive_array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = primitive_array.json; sourceTree = "<group>"; };
 		2B89618B1A42541D002309C8 /* array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = array.json; sourceTree = "<group>"; };
 		2BD30DB11A423FC800BEC3BE /* cute-possum-parser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cute-possum-parser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD30DB51A423FC800BEC3BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				2BD30DDA1A42405800BEC3BE /* cutie_possum.json */,
 				2B89618B1A42541D002309C8 /* array.json */,
 				2B416DD71A4258EE00F23E60 /* people.json */,
+				2B416DE81A42879000F23E60 /* primitive_array.json */,
 			);
 			name = TestData;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				2B89618D1A42543B002309C8 /* array.json in Resources */,
 				2BD30DBC1A423FC800BEC3BE /* Main.storyboard in Resources */,
 				2BD30DDB1A42405800BEC3BE /* cutie_possum.json in Resources */,
+				2B416DE91A42879000F23E60 /* primitive_array.json in Resources */,
 				2BD30DC11A423FC800BEC3BE /* LaunchScreen.xib in Resources */,
 				2BD30DDD1A42409D00BEC3BE /* Default-568h@2x.png in Resources */,
 				2BD30DBE1A423FC800BEC3BE /* Images.xcassets in Resources */,

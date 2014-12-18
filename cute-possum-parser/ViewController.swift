@@ -14,7 +14,7 @@ class ViewController: UIViewController, ViewControllerWithDebugOutputProtocol {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    outputLabel.text = ""
   }
 
   override func didReceiveMemoryWarning() {

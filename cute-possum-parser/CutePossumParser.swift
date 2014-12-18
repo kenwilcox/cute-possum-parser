@@ -1,6 +1,7 @@
 //
 //  CutePossumParser.swift
-//  SwippiDetails
+//  
+//  Json parser for Swift. Handy for converting JSON into Swift structs.
 //
 //  Created by Evgenii Neumerzhitckii on 18/12/2014.
 //  Copyright (c) 2014 The Exchange Group Pty Ltd. All rights reserved.
@@ -26,7 +27,7 @@ public class CutePossumParser {
         data = [cutePossumArrayKey: parsed]
       } else {
         data = NSDictionary()
-        successfull = false
+        reportFailure()
       }
     }
   }
@@ -36,17 +37,19 @@ public class CutePossumParser {
     self.parent = parent
   }
   
-  // Returns possum parser for the child data with 'name'
+  // Returns parser for the attribute
   public subscript(name: String) -> CutePossumParser {
     if let subData = data[name] as? NSDictionary {
       return CutePossumParser(data: subData, parent: self)
     } else {
-      successfull = false
+      reportFailure()
       return CutePossumParser(data: NSDictionary(), parent: self)
     }
   }
   
   private var amISuccessfull = true
+  
+  // Tells is parsing was successfull
   public var successfull: Bool {
     get {
       if let currentParent = parent {
@@ -54,28 +57,27 @@ public class CutePossumParser {
       }
       return amISuccessfull
     }
-    
-    set {
-      if let currentParent = parent {
-        currentParent.successfull = newValue
-        return
-      }
-      amISuccessfull = newValue
-    }
   }
   
+  private func reportFailure() {
+    parent?.reportFailure()
+    amISuccessfull = false
+  }
+  
+  // Parses primitive value: String, Int, [String] etc.
   public func parse<T>(name: String, miss: T, canBeMissing: Bool = false) -> T {
     if !successfull { return miss }
     
     if let parsed = data[name] as? T {
       return parsed
     } else {
-      if !canBeMissing { successfull = false }
+      if !canBeMissing { reportFailure() }
     }
     
     return miss
   }
   
+  // Parses a value that is assigned to a Swift optional.
   public func parseOptional<T>(name: String, miss: T? = nil) -> T? {
     if !successfull { return miss }
     
@@ -86,12 +88,21 @@ public class CutePossumParser {
     return miss
   }
   
+  // Parses an array of primitive values: String, Int, [String] etc.
+  public func parseArray<T: CollectionType>(miss: T, canBeMissing: Bool = false) -> T {
+    if !successfull { return miss }
+    
+    return parse(cutePossumArrayKey, miss: miss, canBeMissing: canBeMissing)
+  }
+  
+  // Parses an array of items. Each item is parsed with supplied function.
   public func parseArray<T: CollectionType>(miss: T, canBeMissing: Bool = false,
     parser: (CutePossumParser)->(T.Generator.Element)) -> T {
     
     return parseArray(cutePossumArrayKey, miss: miss, parser: parser)
   }
   
+  // Parses an array of items. Each item is parsed with supplied function.
   public func parseArray<T: CollectionType>(name: String, miss: T, canBeMissing: Bool = false,
     parser: (CutePossumParser)->(T.Generator.Element)) -> T {
       
@@ -107,7 +118,7 @@ public class CutePossumParser {
         if successfull {
           parsedItems.append(parsedValue)
         } else {
-          if !canBeMissing { successfull = false }
+          if !canBeMissing { reportFailure() }
           return miss
         }
       }
@@ -116,7 +127,7 @@ public class CutePossumParser {
       
     } else {
       
-      if !canBeMissing { successfull = false }
+      if !canBeMissing { reportFailure() }
       
     }
     
