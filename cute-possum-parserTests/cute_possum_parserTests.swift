@@ -120,7 +120,7 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(false, thing2.spin)
   }
   
-  func testParsePrimitiveArray() {
+  func testParseTopLevelArray() {
     let json = TestJsonLoader.read("primitive_array.json")
     
     let p = CutePossumParser(json: json)
@@ -130,7 +130,7 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(["one", "two", "three"], items)
   }
   
-  func testParseJustAString() {
+  func testParseTopLevelString() {
     let json = TestJsonLoader.read("just_a_string.json")
     
     let p = CutePossumParser(json: json)
