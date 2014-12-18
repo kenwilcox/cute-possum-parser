@@ -4,7 +4,7 @@ This parser is designed to convert JSON into Swift structs and classes.
 
 ## Example
 
-Suppose we want to parse the following JSON file:
+Given the JSON file:
 
 ```JSON
 {
@@ -31,7 +31,7 @@ Suppose we want to parse the following JSON file:
 }
 ```
 
-Into Swift stucts:
+### Into Swift stucts
 
 ```Swift
 struct Possum {
@@ -57,7 +57,7 @@ struct Friend {
 }
 ```
 
-Parsing code:
+### Parsing code
 
 ```Swift
 let p = CutePossumParser(json: json)
