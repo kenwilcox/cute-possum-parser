@@ -49,7 +49,7 @@ public class CutePossumParser {
   
   private var amISuccessfull = true
   
-  // Tells is parsing was successfull
+  // Was parsing successfull?
   public var successfull: Bool {
     get {
       if let currentParent = parent {
