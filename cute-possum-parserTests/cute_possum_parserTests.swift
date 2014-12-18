@@ -63,7 +63,7 @@ class cute_possum_parserTests: XCTestCase {
       })
     )
     
-    XCTAssertTrue(p.successful)
+    XCTAssertTrue(p.success)
     
     XCTAssertEqual("Cutie the possum", model.name)
     XCTAssertEqual("", model.species) // missing in JSON
@@ -105,7 +105,7 @@ class cute_possum_parserTests: XCTestCase {
       )
     })
     
-    XCTAssertTrue(p.successful)
+    XCTAssertTrue(p.success)
     
     XCTAssertEqual(2, things.count)
     
@@ -126,7 +126,7 @@ class cute_possum_parserTests: XCTestCase {
     let p = CutePossumParser(json: json)
     let items: [String] = p.parseArray([])
     
-    XCTAssertTrue(p.successful)
+    XCTAssertTrue(p.success)
     XCTAssertEqual(["one", "two", "three"], items)
   }
   

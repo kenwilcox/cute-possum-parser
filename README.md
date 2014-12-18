@@ -90,7 +90,7 @@ let model = Possum(
   })
 )
 
-if !p.successful { // report failure if necessary }
+if !p.success { // report failure if necessary }
 ```
 
 See other examples in this [unit test](https://github.com/exchangegroup/cute-possum-parser/blob/master/cute-possum-parserTests/cute_possum_parserTests.swift).
