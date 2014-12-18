@@ -1,4 +1,4 @@
-# JSON parser for iOS written in Swift
+# JSON parser for iOS and Swift
 
 This parser is designed to convert JSON into Swift structs and classes.
 
