@@ -114,10 +114,8 @@ public class CutePossumParser {
   // Parses an array of items. Each item is parsed with supplied function.
   public func parseArray<T: CollectionType>(name: String, miss: T, canBeMissing: Bool = false,
     parser: (CutePossumParser)->(T.Generator.Element)) -> T {
-      
-    var value: AnyObject? = data[name]
-      
-    if let items = value as? NSArray {
+            
+    if let items = data[name] as? NSArray {
       var parsedItems = Array<T.Generator.Element>()
       
       for item in items {
