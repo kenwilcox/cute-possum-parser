@@ -3,6 +3,10 @@
 //  
 //  Json parser for Swift. Handy for converting JSON into Swift structs.
 //
+//  Demo and examples:
+//
+//  https://github.com/exchangegroup/cute-possum-parser
+//
 //  Created by Evgenii Neumerzhitckii on 18/12/2014.
 //  Copyright (c) 2014 The Exchange Group Pty Ltd. All rights reserved.
 //
