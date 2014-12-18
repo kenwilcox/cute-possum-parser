@@ -41,6 +41,11 @@ public class CutePossumParser {
     self.parent = parent
   }
   
+  init(array: NSArray, parent: CutePossumParser? = nil) {
+    data = [cutePossumArrayKey: array]
+    self.parent = parent
+  }
+  
   // Returns parser for the attribute
   public subscript(name: String) -> CutePossumParser {
     if let subData = data[name] as? NSDictionary {
@@ -112,11 +117,21 @@ public class CutePossumParser {
       
     var value: AnyObject? = data[name]
       
-    if let items = value as? [NSDictionary] {
+    if let items = value as? NSArray {
       var parsedItems = Array<T.Generator.Element>()
       
       for item in items {
-        let itemParser = CutePossumParser(data: item, parent: self)
+        var itemParser: CutePossumParser
+        
+        if let currentData = item as? NSDictionary {
+          itemParser = CutePossumParser(data: currentData, parent: self)
+        } else if let currentArray = item as? NSArray {
+          itemParser = CutePossumParser(array: currentArray, parent: self)
+        } else {
+          if !canBeMissing { reportFailure() }
+          return miss
+        }
+        
         let parsedValue = parser(itemParser)
         
         if success {
@@ -130,11 +145,9 @@ public class CutePossumParser {
       if let result = parsedItems as? T { return result }
       
     } else {
-      
       if !canBeMissing { reportFailure() }
-      
     }
-    
+      
     return miss
   }
 }

@@ -130,6 +130,52 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(["one", "two", "three"], items)
   }
   
+  func testParseArrayOfArrays() {
+    struct Thing {
+      let name: String
+      let color: String
+    }
+    
+    let json = TestJsonLoader.read("array_of_arrays.json")
+    
+    let p = CutePossumParser(json: json)
+    
+    let items: [[Thing]] = p.parseArray([], parser: { p in
+      return p.parseArray([], { p in
+         return Thing(
+          name: p.parse("name", miss: ""),
+          color: p.parse("color", miss: "")
+        )
+      })
+    })
+    
+    XCTAssertTrue(p.success)
+    
+    XCTAssertEqual(2, items.count)
+    
+    // First array
+    // ------------
+    
+    let array1 = items[0]
+    XCTAssertEqual(2, array1.count)
+    
+    // Items
+    let item1 = array1[0]
+    XCTAssertEqual("Grass", item1.name)
+    XCTAssertEqual("Green", item1.color)
+    
+    // Second array
+    // ------------
+    
+    let array2 = items[1]
+    XCTAssertEqual(3, array2.count)
+    
+    // Items
+    let item2 = array2.last!
+    XCTAssertEqual("Infinity", item2.name)
+    XCTAssertEqual("No color", item2.color)
+  }
+  
   func testParsePeople() {
     let json = TestJsonLoader.read("people.json")
     

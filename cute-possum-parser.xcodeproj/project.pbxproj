@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B398D6B1A42A8550040C75B /* array_of_arrays.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B398D6A1A42A8550040C75B /* array_of_arrays.json */; };
 		2B416DD81A4258EF00F23E60 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B416DD71A4258EE00F23E60 /* people.json */; };
 		2B416DDA1A4272D800F23E60 /* PeopleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B416DD91A4272D800F23E60 /* PeopleParser.swift */; };
 		2B416DDC1A42730300F23E60 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B416DDB1A42730300F23E60 /* Person.swift */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B398D6A1A42A8550040C75B /* array_of_arrays.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = array_of_arrays.json; sourceTree = "<group>"; };
 		2B416DD71A4258EE00F23E60 /* people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people.json; sourceTree = "<group>"; };
 		2B416DD91A4272D800F23E60 /* PeopleParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleParser.swift; sourceTree = "<group>"; };
 		2B416DDB1A42730300F23E60 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
@@ -169,11 +171,12 @@
 		2BD30DD91A42402A00BEC3BE /* TestData */ = {
 			isa = PBXGroup;
 			children = (
-				2BD30DDE1A4240CD00BEC3BE /* TestJsonLoader.swift */,
-				2BD30DDA1A42405800BEC3BE /* cutie_possum.json */,
 				2B89618B1A42541D002309C8 /* array.json */,
+				2B398D6A1A42A8550040C75B /* array_of_arrays.json */,
+				2BD30DDA1A42405800BEC3BE /* cutie_possum.json */,
 				2B416DD71A4258EE00F23E60 /* people.json */,
 				2B416DE81A42879000F23E60 /* primitive_array.json */,
+				2BD30DDE1A4240CD00BEC3BE /* TestJsonLoader.swift */,
 			);
 			name = TestData;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				2B416DE91A42879000F23E60 /* primitive_array.json in Resources */,
 				2BD30DC11A423FC800BEC3BE /* LaunchScreen.xib in Resources */,
 				2BD30DDD1A42409D00BEC3BE /* Default-568h@2x.png in Resources */,
+				2B398D6B1A42A8550040C75B /* array_of_arrays.json in Resources */,
 				2BD30DBE1A423FC800BEC3BE /* Images.xcassets in Resources */,
 				2B416DD81A4258EF00F23E60 /* people.json in Resources */,
 			);
