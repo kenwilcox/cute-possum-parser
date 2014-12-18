@@ -118,6 +118,21 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(false, thing2.spin)
   }
   
+  func testParsePeople() {
+    let json = TestJsonLoader.read("people.json")
+    
+    let people = PeopleParser.parse(json)
+    
+    XCTAssertEqual(100, people.count)
+    
+    // Person
+    // -----------------
+    
+    let person = people[4]
+    XCTAssertEqual(5, person.id)
+    XCTAssertEqual("Alston West", person.name)
+  }
+  
   func testPerformanceExample() {
       // This is an example of a performance test case.
       self.measureBlock() {
