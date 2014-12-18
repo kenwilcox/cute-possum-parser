@@ -19,7 +19,14 @@ public class PeopleParser {
         age: p.parse("age", miss: 0),
         latitude: p.parse("latitude", miss: 0),
         longitude: p.parse("longitude", miss: 0),
-        tags: p.parse("tags", miss: [])
+        tags: p.parse("tags", miss: []),
+        
+        friends: p.parseArray("friends", miss: [], parser: { p in
+          return Friend(
+            id: p.parse("id", miss: 0),
+            name: p.parse("name", miss: "")
+          )
+        })
       )
     })
   }

@@ -130,23 +130,20 @@ class cute_possum_parserTests: XCTestCase {
     
     let person = people[4]
     XCTAssertEqual(5, person.id)
-    XCTAssertEqual("Hester Drake", person.name)
-    XCTAssertEqual(20, person.age)
-    XCTAssertEqual(52.299449, person.latitude)
-    XCTAssertEqual(34.443687, person.longitude)
+    XCTAssertEqual("Jennings Richmond", person.name)
+    XCTAssertEqual(39, person.age)
+    XCTAssertEqual(16.984534, person.latitude)
+    XCTAssertEqual(80.205096, person.longitude)
+    XCTAssertEqual(["duis","irure","laboris"], person.tags)
     
-    let expectedTags = [
-      "reprehenderit",
-      "cupidatat",
-      "laboris",
-      "occaecat",
-      "cupidatat",
-      "eu",
-      "velit"
-    ]
+    // Friends
+    // -----------------
     
-    XCTAssertEqual(expectedTags, person.tags)
+    XCTAssertEqual(8, person.friends.count)
 
+    let friend = person.friends[3]
+    XCTAssertEqual(4, friend.id)
+    XCTAssertEqual("Moss Medina", friend.name)
   }
   
   func testPerformanceExample() {

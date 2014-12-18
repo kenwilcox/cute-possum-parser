@@ -1,5 +1,5 @@
 //
-//  PersonModel.swift
+//  Friend.swift
 //  cute-possum-parser
 //
 //  Created by Evgenii Neumerzhitckii on 18/12/2014.
@@ -8,12 +8,7 @@
 
 import Foundation
 
-public struct Person {
+public struct Friend {
   public let id: Int
   public let name: String
-  public let age: Int
-  public let latitude: Double
-  public let longitude: Double
-  public let tags: [String]
-  public let friends: [Friend]
 }

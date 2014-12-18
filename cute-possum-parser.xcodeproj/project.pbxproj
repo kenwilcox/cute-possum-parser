@@ -10,6 +10,7 @@
 		2B416DD81A4258EF00F23E60 /* people.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B416DD71A4258EE00F23E60 /* people.json */; };
 		2B416DDA1A4272D800F23E60 /* PeopleParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B416DD91A4272D800F23E60 /* PeopleParser.swift */; };
 		2B416DDC1A42730300F23E60 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B416DDB1A42730300F23E60 /* Person.swift */; };
+		2B416DDE1A427D4000F23E60 /* Friend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B416DDD1A427D4000F23E60 /* Friend.swift */; };
 		2B89618D1A42543B002309C8 /* array.json in Resources */ = {isa = PBXBuildFile; fileRef = 2B89618B1A42541D002309C8 /* array.json */; };
 		2BD30DB71A423FC800BEC3BE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD30DB61A423FC800BEC3BE /* AppDelegate.swift */; };
 		2BD30DB91A423FC800BEC3BE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BD30DB81A423FC800BEC3BE /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 		2B416DD71A4258EE00F23E60 /* people.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = people.json; sourceTree = "<group>"; };
 		2B416DD91A4272D800F23E60 /* PeopleParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeopleParser.swift; sourceTree = "<group>"; };
 		2B416DDB1A42730300F23E60 /* Person.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		2B416DDD1A427D4000F23E60 /* Friend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Friend.swift; sourceTree = "<group>"; };
 		2B89618B1A42541D002309C8 /* array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = array.json; sourceTree = "<group>"; };
 		2BD30DB11A423FC800BEC3BE /* cute-possum-parser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "cute-possum-parser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2BD30DB51A423FC800BEC3BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				2BD30DD61A423FFB00BEC3BE /* Lib */,
 				2BD30DB61A423FC800BEC3BE /* AppDelegate.swift */,
 				2B416DDB1A42730300F23E60 /* Person.swift */,
+				2B416DDD1A427D4000F23E60 /* Friend.swift */,
 				2B416DD91A4272D800F23E60 /* PeopleParser.swift */,
 				2BD30DB81A423FC800BEC3BE /* ViewController.swift */,
 				2BD30DBA1A423FC800BEC3BE /* Main.storyboard */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B416DDC1A42730300F23E60 /* Person.swift in Sources */,
+				2B416DDE1A427D4000F23E60 /* Friend.swift in Sources */,
 				2BD30DDF1A4240CD00BEC3BE /* TestJsonLoader.swift in Sources */,
 				2BD30DB91A423FC800BEC3BE /* ViewController.swift in Sources */,
 				2BD30DB71A423FC800BEC3BE /* AppDelegate.swift in Sources */,
