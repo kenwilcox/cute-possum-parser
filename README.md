@@ -31,7 +31,7 @@ We want to convert the JSON:
 }
 ```
 
-into these Swift stucts
+into the Swift stucts:
 
 ```Swift
 struct Possum {
