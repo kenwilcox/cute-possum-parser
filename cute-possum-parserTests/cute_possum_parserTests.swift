@@ -124,10 +124,20 @@ class cute_possum_parserTests: XCTestCase {
     let json = TestJsonLoader.read("primitive_array.json")
     
     let p = CutePossumParser(json: json)
-    let items: [String] = p.parseArray([])
+    let items: [String] = p.parse([])
     
     XCTAssertTrue(p.success)
     XCTAssertEqual(["one", "two", "three"], items)
+  }
+  
+  func testParseJustAString() {
+    let json = TestJsonLoader.read("just_a_string.json")
+    
+    let p = CutePossumParser(json: json)
+    let result: String = p.parse("")
+    
+    XCTAssertTrue(p.success)
+    XCTAssertEqual("Why there is something rather than nothing? Because empty space is unstable.", result)
   }
   
   func testParseArrayOfArrays() {
@@ -210,5 +220,43 @@ class cute_possum_parserTests: XCTestCase {
     self.measureBlock() {
      let people = PeopleParser.parse(json)
     }
+  }
+  
+  // Failures
+  // ---------------------
+  
+  
+  func testParseFailure() {
+    let p = CutePossumParser(json: "not a valid JSON")
+    let result: String = p.parse("")
+    XCTAssertFalse(p.success)
+  }
+  
+  func testParseMissingAttributeFailure() {
+    let p = CutePossumParser(json: "{ \"name\":\"hi there\" }")
+    let result: String = p.parse("address", miss: "")
+    XCTAssertFalse(p.success)
+  }
+  
+  func testParseArrayMissingAttributeFailure() {
+    struct NicePerson {
+      let friends: [NiceFriend]
+    }
+    
+    struct NiceFriend {
+      let name: String
+    }
+    
+    let p = CutePossumParser(json: "{ \"friends\": [ { \"address\": \"\" } ] }")
+    
+    let person = NicePerson(
+      friends: p.parseArray("friends", miss: [], parser: { p in
+        return NiceFriend(
+          name: p.parse("name", miss: "")
+        )
+      })
+    )
+    
+    XCTAssertFalse(p.success)
   }
 }

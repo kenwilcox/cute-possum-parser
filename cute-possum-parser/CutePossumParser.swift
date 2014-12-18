@@ -13,7 +13,7 @@
 
 import Foundation
 
-private let cutePossumArrayKey = "kutePossumArrayKey#&"
+private let cutePossumTopLevelObjectKey = "kutePossumTopLevelObjectKey#&"
 
 public class CutePossumParser {
   var parent: CutePossumParser?
@@ -21,18 +21,32 @@ public class CutePossumParser {
   
   public init(json: String) {
     let encoded = json.dataUsingEncoding(NSUTF8StringEncoding)
-    let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(encoded!,
-      options: .MutableContainers, error: nil)
-    
-    if let parsed = parsedObject as? NSDictionary {
-      data = parsed
-    } else {
-      if let parsed = parsedObject as? NSArray { // handle array in json
-        data = [cutePossumArrayKey: parsed]
-      } else {
+
+    if let currentEncoded = encoded {
+      var error: NSError?
+
+      let parsedObject: AnyObject? = NSJSONSerialization.JSONObjectWithData(currentEncoded,
+        options: .MutableContainers | .AllowFragments, error: &error)
+      
+      if error != nil {
         data = NSDictionary()
         reportFailure()
+        return
       }
+      
+      if let parsed = parsedObject as? NSDictionary {
+        data = parsed
+      } else {
+        if let parsed: AnyObject = parsedObject {
+          data = [cutePossumTopLevelObjectKey: parsed]
+        } else {
+          data = NSDictionary()
+          reportFailure()
+        }
+      }
+    } else {
+      data = NSDictionary()
+      reportFailure()
     }
   }
   
@@ -42,7 +56,7 @@ public class CutePossumParser {
   }
   
   init(array: NSArray, parent: CutePossumParser? = nil) {
-    data = [cutePossumArrayKey: array]
+    data = [cutePossumTopLevelObjectKey: array]
     self.parent = parent
   }
   
@@ -86,6 +100,13 @@ public class CutePossumParser {
     return miss
   }
   
+  // Parses a top-level object: String, Int, [String] etc.
+  public func parse<T: CollectionType>(miss: T, canBeMissing: Bool = false) -> T {
+    if !success { return miss }
+    
+    return parse(cutePossumTopLevelObjectKey, miss: miss, canBeMissing: canBeMissing)
+  }
+  
   // Parses a value that is assigned to a Swift optional.
   public func parseOptional<T>(name: String, miss: T? = nil) -> T? {
     if !success { return miss }
@@ -97,21 +118,14 @@ public class CutePossumParser {
     return miss
   }
   
-  // Parses an array of primitive values: String, Int, [String] etc.
-  public func parseArray<T: CollectionType>(miss: T, canBeMissing: Bool = false) -> T {
-    if !success { return miss }
-    
-    return parse(cutePossumArrayKey, miss: miss, canBeMissing: canBeMissing)
-  }
-  
-  // Parses an array of items. Each item is parsed with supplied function.
+  // Parses a top-level array of items with custom parser function.
   public func parseArray<T: CollectionType>(miss: T, canBeMissing: Bool = false,
     parser: (CutePossumParser)->(T.Generator.Element)) -> T {
     
-    return parseArray(cutePossumArrayKey, miss: miss, parser: parser)
+    return parseArray(cutePossumTopLevelObjectKey, miss: miss, parser: parser)
   }
   
-  // Parses an array of items. Each item is parsed with supplied function.
+  // Parses an array of items with custom parser function.
   public func parseArray<T: CollectionType>(name: String, miss: T, canBeMissing: Bool = false,
     parser: (CutePossumParser)->(T.Generator.Element)) -> T {
       
