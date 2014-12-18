@@ -94,3 +94,8 @@ if !p.successfull { // report failure if necessary }
 ```
 
 See other examples in this [unit test](https://github.com/exchangegroup/cute-possum-parser/blob/master/cute-possum-parserTests/cute_possum_parserTests.swift).
+
+
+## Project home
+
+[https://github.com/exchangegroup/cute-possum-parser/tree/master/cute-possum-parser][]
