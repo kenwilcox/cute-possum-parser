@@ -31,7 +31,7 @@ Suppose we want to parse the following JSON file:
 }
 ```
 
-Swift stucts:
+Into Swift stucts:
 
 ```Swift
 struct Possum {
@@ -55,4 +55,36 @@ struct Friend {
   let name: String
   let likesLeaves: Bool
 }
+```
+
+Parsing code:
+
+```Swift
+let p = CutePossumParser(json: json)
+
+let model = Possum(
+  name: p.parse("name", miss: ""),
+  species: p.parse("species", miss: "", canBeMissing: true),
+  lengthCM: p.parse("lengthCM", miss: 0),
+  weightKG: p.parse("weightKG", miss: 0),
+  likes: p.parse("likes", miss: []),
+  plans: p.parseOptional("plans"),
+  spouse: p.parseOptional("spouse"),
+  bio: p.parseOptional("bio"),
+  
+  home: Address(
+    planet: p["home"].parse("planet", miss: "")
+  ),
+  
+  friends: p.parseArray("friends", miss: [], parser: { p in
+
+    return Friend(
+      name: p.parse("name", miss: ""),
+      likesLeaves: p.parse("likesLeaves", miss: true)
+    )
+    
+  })
+)
+
+p.successfull
 ```
