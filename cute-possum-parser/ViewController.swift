@@ -8,8 +8,10 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ViewControllerWithDebugOutputProtocol {
 
+  @IBOutlet weak var outputLabel: UILabel!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -21,5 +23,12 @@ class ViewController: UIViewController {
   }
 
 
+  @IBAction func onParseJsonFileTapped(sender: AnyObject) {
+    let json = TestJsonLoader.read("people.json")
+    
+    let tick = TegTickTock()
+    let people = PeopleParser.parse(json)
+    tick.outputView(message: "Parsed in")
+  }
 }
 
