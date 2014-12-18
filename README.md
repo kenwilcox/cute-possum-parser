@@ -31,7 +31,7 @@ Given the JSON file:
 }
 ```
 
-### Into Swift stucts
+### And Swift stucts
 
 ```Swift
 struct Possum {
@@ -57,7 +57,7 @@ struct Friend {
 }
 ```
 
-### Parsing code
+### Parsing
 
 ```Swift
 let p = CutePossumParser(json: json)
