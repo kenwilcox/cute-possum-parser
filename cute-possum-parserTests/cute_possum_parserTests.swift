@@ -147,10 +147,10 @@ class cute_possum_parserTests: XCTestCase {
   }
   
   func testPerformanceExample() {
-      // This is an example of a performance test case.
-      self.measureBlock() {
-          // Put the code you want to measure the time of here.
-      }
+    let json = TestJsonLoader.read("people.json")
+  
+    self.measureBlock() {
+     let people = PeopleParser.parse(json)
+    }
   }
-    
 }
