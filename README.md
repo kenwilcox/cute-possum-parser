@@ -89,4 +89,4 @@ let model = Possum(
 if !p.successfull { // report failure if necessary }
 ```
 
-See other examples in this [unit test](https://raw.githubusercontent.com/exchangegroup/cute-possum-parser/master/cute-possum-parserTests/cute_possum_parserTests.swift?token=AA1vG2SgcYr24VsNQAaKW1ru4l_PUllpks5Um5AlwA%3D%3D)
+See other examples in this [unit test](https://github.com/exchangegroup/cute-possum-parser/blob/master/cute-possum-parserTests/cute_possum_parserTests.swift)
