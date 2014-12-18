@@ -2,6 +2,10 @@
 
 This parser is designed to convert JSON into Swift structs and classes.
 
+## Setup
+
+Copy [CutePossumParser.swift](https://github.com/exchangegroup/cute-possum-parser/blob/master/cute-possum-parser/CutePossumParser.swift) file to your project.
+
 ## Example
 
 We want to convert the JSON:
