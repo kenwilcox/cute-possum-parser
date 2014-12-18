@@ -88,7 +88,7 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual(false, friend2.likesLeaves)
   }
   
-  func testParseArray() {
+  func testParseArrayWithCustomFunction() {
     let json = TestJsonLoader.read("array.json")
     
     struct StrangeThing {
