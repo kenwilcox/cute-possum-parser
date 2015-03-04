@@ -8,7 +8,9 @@
   "home": {
     "planet": "Earth"
   },
-  
+  "work": {
+    "planet": "Mars"
+  },
   "friends": [
     {
       "name": "Pinky the wombat",

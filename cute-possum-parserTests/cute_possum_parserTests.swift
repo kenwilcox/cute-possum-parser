@@ -25,6 +25,7 @@ class cute_possum_parserTests: XCTestCase {
       let spouse: String?
       let bio: String?
       let home: Address
+      let work: Address?
       let friends: [Friend]
     }
     
@@ -52,6 +53,12 @@ class cute_possum_parserTests: XCTestCase {
       home: Address(
         planet: p["home"].parse("planet", miss: "")
       ),
+
+      work: p.parseOptional("work", parser: { p in
+        return Address(
+          planet: p.parse("planet", miss: "")
+        )
+      }),
       
       friends: p.parseArray("friends", miss: [], parser: { p in
 
@@ -74,7 +81,8 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual("Mikrla the possum", model.spouse!)
     XCTAssertTrue(model.bio == nil) // missing in JSON
     XCTAssertEqual("Earth", model.home.planet)
-    
+    XCTAssertEqual("Mars", model.work!.planet) // optional model
+
     XCTAssertEqual(2, model.friends.count)
     
     // Friend one
@@ -87,7 +95,7 @@ class cute_possum_parserTests: XCTestCase {
     XCTAssertEqual("Fluffy the platypus", friend2.name)
     XCTAssertEqual(false, friend2.likesLeaves)
   }
-  
+
   func testParseArrayWithCustomFunction() {
     let json = TestJsonLoader.read("array.json")
     
@@ -124,7 +132,7 @@ class cute_possum_parserTests: XCTestCase {
     let json = TestJsonLoader.read("primitive_array.json")
     
     let p = CutePossumParser(json: json)
-    let items: [String] = p.parse([])
+    let items: [String] = p.parseTopLevelValue([])
     
     XCTAssertTrue(p.success)
     XCTAssertEqual(["one", "two", "three"], items)
@@ -134,7 +142,7 @@ class cute_possum_parserTests: XCTestCase {
     let json = TestJsonLoader.read("just_a_string.json")
     
     let p = CutePossumParser(json: json)
-    let result: String = p.parse("")
+    let result: String = p.parseTopLevelValue("")
     
     XCTAssertTrue(p.success)
     XCTAssertEqual("Why there is something rather than nothing? Because empty space is unstable.", result)
@@ -227,7 +235,7 @@ class cute_possum_parserTests: XCTestCase {
   
   func testParseFailure() {
     let p = CutePossumParser(json: "not a valid JSON")
-    let result: String = p.parse("")
+    let result: String = p.parseTopLevelValue("")
     XCTAssertFalse(p.success)
   }
   

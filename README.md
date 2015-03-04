@@ -21,7 +21,7 @@ We want to convert the JSON:
   "home": {
     "planet": "Earth"
   },
-
+  "work": null,
   "friends": [
     {
       "name": "Pinky the wombat",
@@ -48,6 +48,7 @@ struct Possum {
   let spouse: String?
   let bio: String?
   let home: Address
+  let work: Address?
   let friends: [Friend]
 }
 
@@ -80,6 +81,12 @@ let model = Possum(
     planet: p["home"].parse("planet", miss: "")
   ),
 
+  work: p.parseOptional("work", parser: { p in
+    return Address(
+      planet: p.parse("planet", miss: "")
+    )
+  }),
+
   friends: p.parseArray("friends", miss: [], parser: { p in
 
     return Friend(
@@ -93,7 +100,7 @@ let model = Possum(
 if !p.success { // report failure if necessary }
 ```
 
-See other examples in this [unit test](https://github.com/exchangegroup/cute-possum-parser/blob/master/cute-possum-parserTests/cute_possum_parserTests.swift).
+See other examples in [unit tests](https://github.com/exchangegroup/cute-possum-parser/blob/master/cute-possum-parserTests/).
 
 
 ## Project home

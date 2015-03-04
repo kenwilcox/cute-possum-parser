@@ -17,12 +17,6 @@ class ViewController: UIViewController, ViewControllerWithDebugOutputProtocol {
     outputLabel.text = ""
   }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
-  }
-
-
   @IBAction func onParseJsonFileTapped(sender: AnyObject) {
     let json = TestJsonLoader.read("people.json")
     
