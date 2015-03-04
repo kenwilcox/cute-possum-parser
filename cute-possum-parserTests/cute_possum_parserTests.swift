@@ -151,7 +151,7 @@ class cute_possum_parserTests: XCTestCase {
     let p = CutePossumParser(json: json)
     
     let items: [[Thing]] = p.parseArray([], parser: { p in
-      return p.parseArray([], { p in
+      return p.parseArray([], parser: { p in
          return Thing(
           name: p.parse("name", miss: ""),
           color: p.parse("color", miss: "")
